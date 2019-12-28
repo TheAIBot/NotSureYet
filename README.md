@@ -1,14 +1,13 @@
 # Count true bools in an array
 
-Although it's a simple problem to solve there's multiple ways to do it and and the performance of the different methds varies a lot. Here i will look through some options i went through when i had to solve the problem.
+Although it's a simple problem to solve there's multiple ways to do it. Here i will look through some options i went through when i had to solve the problem. If you don't care about the journey the you can find the results in the table below and the best solution at the end of this.
 
-|          Method |        N |        Mean |     Error |      StdDev |      Median | Ratio | RatioSD |
-|---------------- |--------- |------------:|----------:|------------:|------------:|------:|--------:|
-|       ScalarSum | 10000000 | 40,881.0 us | 892.99 us | 2,223.87 us | 39,835.3 us | 81.42 |    3.25 |
-|   ScalarFastSum | 10000000 |  5,494.6 us |  30.61 us |    28.63 us |  5,501.4 us |  9.98 |    0.11 |
-| ScalarPopCntSum | 10000000 |    909.5 us |   5.50 us |     4.87 us |    910.5 us |  1.65 |    0.02 |
-|       VectorSum | 10000000 |    550.8 us |   6.60 us |     6.17 us |    550.1 us |  1.00 |    0.00 |
-
+|          Method |        N |        Mean | Ratio |
+|---------------- |--------- |------------:|------:|
+|       ScalarSum | 10.000.000 | 40,881.0 us | 81.42 |
+|   ScalarFastSum | 10.000.000 |  5,494.6 us |  9.98 |
+| ScalarPopCntSum | 10.000.000 |    909.5 us |  1.65 |
+|       VectorSum | 10.000.000 |    550.8 us |  1.00 |
 
 ## Branching code
 
@@ -30,6 +29,16 @@ public int CountTruesByBranching(bool[] bools)
 }
 ```
 #### Benchmark
+
+This solution is the only one where its performance depends on the data.
+
+|    Method |         N |      Mean |
+|---------- |---------- |----------:|
+| ScalarSum |    Random | 41.327 ms |
+| ScalarSum |  All True |  6.654 ms |
+| ScalarSum | All False |  5.616 ms |
+
+
 
 Insert benchmark where the method is tested with random, all true and all false arrays.
 
@@ -62,8 +71,10 @@ public int CountTruesByAdding(bool[] bools)
 
 ## Intrinsics
 
+The previous solution did
+
 ```
-public int CountTruesByAdding(bool[] bools)
+public int CountTruesWithPopCnt(bool[] bools)
 {
 	ReadOnlySpan<ulong> longs = MemoryMarshal.Cast<bool, ulong>(bools);
 	int sum = 0;
@@ -86,7 +97,7 @@ public int CountTruesByAdding(bool[] bools)
 ## Vectorized
 
 ```
-public int CountTruesByAdding(bool[] bools)
+public int CountTruesWithAVX(bool[] bools)
 {
 	ReadOnlySpan<byte> bytes = MemoryMarshal.Cast<bool, byte>(bools);
 	int sum = 0;
