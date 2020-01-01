@@ -1,5 +1,38 @@
 # Count true bools in an array
 
+In C# a true boolean has the least significant bit set and a false boolean has no bits set. To count the number of true bools in an array all you have to do is sum up all the set bits in the array. C# doesn't support arithmetic operations on booleans, instead it's possible to test the booleans value and execute different code depending on the result. In C# this test takes the form of an if statement where a number is incremented if the boolean is true.
+
+```
+public int CountTruesByBranching(bool[] bools)
+{
+	int sum = 0;
+	for (int i = 0; i < bools.Length; i++)
+	{
+		if (bools[i])
+		{
+			sum++;
+		}
+	}
+
+	return sum;
+}
+```
+
+
+
+It's a simple solution and it works on all platforms. The problem is performance. The test makes it so there is now two branches of execution that the code can take. in order to explain why that's a problem i will explain a little bit about how a modern x86 CPU executes code.
+
+
+
+In order to increase peformance, CPUs like to execute code before the previous code has even finished. In this example the CPU can do the test before it has even loaded the boolean from memory.
+
+To do this, the CPU has to predict which branch it should
+
+
+
+
+
+
 Although it's a simple problem to solve there's multiple ways to do it. Here i will look through some options i went through when i had to solve the problem. If you don't care about the journey the you can find the results in the table below and the best solution at the end of this.
 
 |          Method |        N |        Mean | Ratio |
