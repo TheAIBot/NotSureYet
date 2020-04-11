@@ -10,7 +10,7 @@ The most important part of optimization is to know what to optimize. It's a wast
 ## Why is it slow?
 There can be a lot of answers to this question but in general there are three categories(the last category isn't here as i am not done with it. you can see a draft of it in the link).
 
-* **Algorithms** Sometimes the code uses an algorithm that takes an obscene amount of time even though it isn't necessary. In order to fix this, you need to know a lot of algorithms your self. The best way here is probably to read a book and then use youtube to explain the algorithms if they are difficult to understand. I can recommend this free(well found the pdf on google) book i have read myself, [Algorithm design](http://www.cs.sjtu.edu.cn/~jiangli/teaching/CS222/files/materials/Algorithm%20Design.pdf). Books suck but you need to know a lot of algorithms in order to increase your chances of knowing an efficient one to a problem. Learning algorithms takes a lot of time and the best way to learn them is probably to take the time and read a book.
+* **Algorithms** Sometimes the code uses an algorithm that takes an obscene amount of time even though it isn't necessary. In order to fix this, you need to know a lot of algorithms your self. The best way here is probably to read a book and then use youtube to explain the algorithms if they are difficult to understand. I can recommend this book i have read myself, Algorithm design by Jon Kleinberg. Books suck but you need to know a lot of algorithms in order to increase your chances of knowing an efficient one to a problem. Learning algorithms takes a lot of time and the best way to learn them is probably to take the time and read a book.
 
 * **Data  structures and hardware utilization** It's too easy to write code that's horrible to execute for the CPU and you need to be able to know why it's horrible for the CPU. In order to know this you need to know a few things. The most important parts are:
   * You need to know what the stack and heap is. 
@@ -61,7 +61,7 @@ Unfortuately i can't remember many of the resources i myself used to learn about
 
 I will link to some of the resources i have used to learn which includes some focusing on C++.
 
-* Book: [Algorithm Design](http://www.cs.sjtu.edu.cn/~jiangli/teaching/CS222/files/materials/Algorithm%20Design.pdf)
+* Book: Algorithm design by Jon Kleinberg
 * Book: [Optimizing software in C++](https://www.agner.org/optimize/optimizing_cpp.pdf)
 * Video: [CppCon 2014: Chandler Carruth "Efficiency with Algorithms, Performance with Data Structures"](https://www.youtube.com/watch?v=fHNmRkzxHWs)
 * Video: [CppCon 2017: Carl Cook “When a Microsecond Is an Eternity: High Performance Trading Systems in C++”](https://www.youtube.com/watch?v=NH1Tta7purM)
