@@ -23,6 +23,7 @@ There can be a lot of answers to this question but in general there are three ca
   * How fast some CPU instructions are to execute compared to others. 
     * ```float a = b * 0.5f``` is faster than ```float a = b / 2.0f``` even though they essentially do the same thing.
   * Multithreading performance pitfalls i.e. locks, false sharing.
+  * How to read assembly. Some issues like mixing floats and doubles or excessive copying are much easier to notice when looking at the assembly.
 
   /*
   This subsection is not done
