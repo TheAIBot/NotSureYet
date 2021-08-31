@@ -2,7 +2,7 @@
 
 In C# a true boolean has the least significant bit set and a false boolean has no bits set. To count the number of true bools in an array all you have to do is sum up all the set bits in the array. C# doesn't support arithmetic operations on booleans, instead it's possible to test the booleans value and execute different code depending on the result. In C# this test takes the form of an if statement where a number is incremented if the boolean is true.
 
-```
+```C#
 public int CountTruesByBranching(bool[] bools)
 {
 	int sum = 0;
@@ -46,7 +46,7 @@ Although it's a simple problem to solve there's multiple ways to do it. Here i w
 
 I believe the most obvious solution to the problem is to use an if statement and increment if the indexed bool is true. It's simple and everyone understands how it works, but it's also the slowest of all the solutions i've found so far. Comming in at over 81X times slower than the fastest method described here.
 
-```
+```C#
 public int CountTruesByBranching(bool[] bools)
 {
 	int sum = 0;
@@ -87,7 +87,7 @@ The random test is much slower than the other two because the branch predictor g
 
 Branching is slow. We can take advantage of the fact that C# is very strict about the vlues of a bool. Unless you change it yourself, then true has the value `1` and false is `0`. If we convert the bool array to a byte array, then we can sum up all the bytes and get the sum of all true bools that way.
 
-```
+```C#
 public int CountTruesByAdding(bool[] bools)
 {
 	ReadOnlySpan<byte> bytes = MemoryMarshal.Cast<bool, byte>(bools);
@@ -106,7 +106,7 @@ public int CountTruesByAdding(bool[] bools)
 
 The previous solution did
 
-```
+```C#
 public int CountTruesWithPopCnt(bool[] bools)
 {
 	ReadOnlySpan<ulong> longs = MemoryMarshal.Cast<bool, ulong>(bools);
@@ -129,7 +129,7 @@ public int CountTruesWithPopCnt(bool[] bools)
 
 ## Vectorized
 
-```
+```C#
 public int CountTruesWithAVX(bool[] bools)
 {
 	ReadOnlySpan<byte> bytes = MemoryMarshal.Cast<bool, byte>(bools);
